@@ -1,0 +1,16 @@
+{
+  "name": "spotify-api-demo",
+  "version": "1.0.0",
+  "description": "Go to: https://developer.spotify.com/dashboard/applications to create your app\r Get your Client Id and Client Secret after creating app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}
