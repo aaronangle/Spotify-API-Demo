@@ -1,7 +1,7 @@
 require('dotenv').config();
-clientId = 'e7081651877449ab96b8c651efafffff';
+const clientId = 'e7081651877449ab96b8c651efafffff';
 //Make a CLIENT_SECRET env variable with your own client secret from spotify
-clientSecret = process.env.CLIENT_SECRET;
+const clientSecret = process.env.CLIENT_SECRET;
 const SpotifyWebApi = require('spotify-web-api-node');
 
 var spotifyApi = new SpotifyWebApi({
