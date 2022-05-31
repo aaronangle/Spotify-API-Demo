@@ -27,9 +27,14 @@ const resolvers = {
 
       const results = await spotifyApi.searchPlaylists('party music', { limit: 2 });
 
-      const play = await spotifyApi.getPlaylist(results.body.playlists.items[0].id);
+      const playlist = await spotifyApi.getPlaylist(results.body.playlists.items[0].id);
 
-      console.log(play.body.tracks.items);
+      const tracks = playlist.body.tracks.items.map(el => {
+        return { ...el.track, image: el.track.album.images[0].url };
+      });
+
+      console.log(tracks);
+      return tracks;
     },
   },
 };
