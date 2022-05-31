@@ -14,6 +14,7 @@ const typeDefs = gql`
   }
   type Query {
     categories: [Category]
+    search: [Category]
   }
 `;
 

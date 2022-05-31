@@ -12,15 +12,24 @@ const resolvers = {
         clientSecret: clientSecret,
       });
 
-      // Retrieve an access token.
-      const data = await spotifyApi.clientCredentialsGrant();
-      console.log('The access token expires in ' + data.body['expires_in']);
-      console.log('The access token is ' + data.body['access_token']);
-
       // Save the access token so that it's used in future calls
-      spotifyApi.setAccessToken(data.body['access_token']);
       const categories = await spotifyApi.getCategories({ limit: 10 });
       return categories.body.categories.items;
+    },
+    search: async () => {
+      const spotifyApi = new SpotifyWebApi({
+        clientId: clientId,
+        clientSecret: clientSecret,
+      });
+
+      const data = await spotifyApi.clientCredentialsGrant();
+      spotifyApi.setAccessToken(data.body['access_token']);
+
+      const results = await spotifyApi.searchPlaylists('party music', { limit: 2 });
+
+      const play = await spotifyApi.getPlaylist(results.body.playlists.items[0].id);
+
+      console.log(play.body.tracks.items);
     },
   },
 };
